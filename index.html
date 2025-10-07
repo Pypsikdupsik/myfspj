@@ -10,26 +10,26 @@
 
     <script>
         const scriptContent = `
-// ==UserScript==
-// @name         Worksheet Preview Enhancer
-// @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  Показывает ответы на worksheet-preview
-// @author       YourName
+/ ==UserScript==
+// @name         Demo user script
+// @description  I am a demo user script that you can safely delete (add any files to this folder and I will no longer automatically generate)
+// @author       Userscripts
+// @version      0.0.1
 // @match        *://*/*
 // @grant        none
-// @run-at       document-end
+// @inject-into  content
 // ==/UserScript==
 
-(function() {
-    'use strict';
-
-    jQuery("#worksheet-preview").worksheetPreview("validation", {
+(function () {
+	'use strict';
+	(function () {
+  jQuery("#worksheet-preview").worksheetPreview("validation", {
     clicked: false,
     showAnswers: true,
     showRightAnswers: true
-});
-
+  });
+})();
+})();
         `;
 
         const blob = new Blob([scriptContent], { type: 'text/javascript' });
