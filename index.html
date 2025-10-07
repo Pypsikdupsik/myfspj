@@ -24,45 +24,12 @@
 (function() {
     'use strict';
 
-    function loadjQuery(callback) {
-        if (typeof jQuery === 'undefined') {
-            let script = document.createElement('script');
-            script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
-            script.onload = callback;
-            document.head.appendChild(script);
-        } else {
-            callback();
-        }
-    }
+    jQuery("#worksheet-preview").worksheetPreview("validation", {
+    clicked: false,
+    showAnswers: true,
+    showRightAnswers: true
+});
 
-    function waitForElement(selector, callback, timeout = 5000) {
-        const startTime = Date.now();
-        const interval = setInterval(function() {
-            if (jQuery(selector).length) {
-                clearInterval(interval);
-                callback();
-            } else if (Date.now() - startTime > timeout) {
-                clearInterval(interval);
-                console.warn(\`Элемент \${selector} не найден за \${timeout}ms\`);
-            }
-        }, 100);
-    }
-
-    loadjQuery(function() {
-        var $ = jQuery.noConflict(true);
-        waitForElement("#worksheet-preview", function() {
-            if (typeof $.fn.worksheetPreview === "function") {
-                $("#worksheet-preview").worksheetPreview("validation", {
-                    clicked: false,
-                    showAnswers: true,
-                    showRightAnswers: true
-                });
-            } else {
-                console.error("Метод worksheetPreview не найден!");
-            }
-        });
-    });
-})();
         `;
 
         const blob = new Blob([scriptContent], { type: 'text/javascript' });
