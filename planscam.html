@@ -1,21 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Важно для адаптивности -->
     <title>Форма оплаты</title>
+    
+    <style>
+        /* 1. Сброс базовых стилей и определение базового размера шрифта */
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            /* Увеличение базового размера шрифта для всего сайта */
+            font-size: 1.125rem; /* Примерно 18px */
+        }
+
+        /* 2. Контейнер для центрирования и ограничения ширины формы */
+        form {
+            background: #fff;
+            padding: 2rem; /* Используем rem для отступов */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 450px; /* Делаем форму шире */
+            margin: 4rem auto; /* Центрируем форму на странице */
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #000;
+            font-size: 1.5rem;
+        }
+
+        /* 3. Стиль для полей ввода и кнопки */
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem; /* Отступ снизу */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Важно: padding не добавляет ширину */
+            font-size: 1rem;
+        }
+
+        label {
+            display: block; /* Чтобы каждая метка была на новой строке */
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Удаляем лишние теги <br> из HTML, так как используем CSS отступы */
+        form br {
+            display: none; 
+        }
+
+    </style>
 </head>
 <body>
-    <h2>Введите данные</h2>
+    
     <form id="paymentForm">
-        <label>Сумма:</label><br>
-        <input type="text" id="summa" name="summa" placeholder="Введите сумму" required><br><br>
+        <h2>Введите данные</h2>
+
+        <label for="summa">Сумма:</label>
+        <input type="text" id="summa" name="summa" placeholder="Введите сумму" required>
         
-        <label>Имя и фамилия:</label><br>
-        <input type="text" id="name" name="name" placeholder="Введите имя и фамилию" required><br><br>
+        <label for="name">Имя и фамилия:</label>
+        <input type="text" id="name" name="name" placeholder="Введите имя и фамилию" required>
         
-        <label>Номер:</label><br>
-        <input type="text" id="number" name="number" placeholder="Введите номер" required><br><br>
+        <label for="number">Номер:</label>
+        <input type="text" id="number" name="number" placeholder="Введите номер" required>
         
         <button type="submit">Сабмит</button>
     </form>
@@ -34,20 +105,6 @@
             // переходим по ссылке
             window.location.href = url;
         });
-        function goFullScreen() {
-  const elem = document.documentElement;
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
-  }
-}
-
     </script>
 </body>
 </html>
-
-
-
